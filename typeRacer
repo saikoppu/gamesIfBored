@@ -1,0 +1,24 @@
+import time
+import random
+sentences = ["I saw Susie sitting in a shoe shine shop", "If a dog chews shoes, whose shoes does he choose?", "Peter Piper picked a peck of pickled peppers", "If you notice this notice, you will notice that this notice is not worth noticing", "How much wood could a woodchuck chuck if a woodchuck could chuck wood?"]
+randomsentence = random.randint(0, 4)
+input("Welcome to Type Racer. Press ENTER to play.")
+print("Ready...")
+time.sleep(1)
+print("Set...")
+time.sleep(1)
+print("GO!")
+print(sentences[randomsentence])
+x = time.time()
+typer = input("Type: ")
+y = time.time()
+words = sentences[randomsentence].split()
+wordinput = typer.split()
+counter = 0
+for i in range(0, len(words)):
+  if i + 1 > len(wordinput):
+    break
+  if words[i] == wordinput[i]:
+    counter = counter + 1
+print("Your accuracy was: " + str(round(counter/len(words) * 100)) + "%")
+print("You finished typing in " + str(y - x) + " seconds.")
