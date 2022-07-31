@@ -1,0 +1,79 @@
+import random
+import time
+# The starting text to how to play the game
+print("Welcome to Blackjack! \n\nIn this game, you will be dealt two cards to start. Your goal is to get as close to 21 as possible without going over - or busting! \nIn this simple version of Blackjack, we only use the cards 2 through 11 (Ace).")
+print("\nThe dealer will first ask you to hit (take another card) or stay. As long as you don't bust, once you decide to stay, the dealer will then play his hand. \nThe dealer always has to hit until his hand is at least 17. Whoever has the better hand at the end wins!")
+#This makes the game repeat forever
+while True:
+  input("\nPress ENTER to start playing Blackjack!")
+  print("Here is your hand: ")
+  usercards = []
+# This for loop adds 2 cards into the user's deck
+  for i in range(0, 2):
+    usercards.append(random.randint(1, 13))
+    sumuser = sum(usercards)
+  print(usercards)
+  if sumuser == 21:
+    input("Blackjack! You've won the game. Press ENTER to play again.")
+#This while true loop repeats until the user decides on an action to perform
+  while True: 
+    invalid = True
+    command = input("Type in H to hit or S to stay: \n")
+    if command == "H" or command == "h":
+      usercards.append(random.randint(2, 11))
+      sumuser = sum(usercards)
+      print(usercards)
+      if sumuser == 21:
+        input("Blackjack! You've won the game. Press ENTER to play again.\n")
+        invalid = False
+        break
+      elif sumuser > 21:
+        input("You have busted and gone over 21. Press ENTER to play again.\n")
+        invalid = False
+        break
+    if command == "S" or command == "s":
+      break
+#This is the code for the dealers turn a
+  if invalid == True:
+    time.sleep(1)
+    print("Dealer's Turn!\n")
+    time.sleep(1)
+    print("Here is the dealers hand\n")
+    dealercards = []
+    for i in range(0, 2):
+      dealercards.append(random.randint(2, 11))
+      dealersum = sum(dealercards)
+    print(dealercards)
+# The dealer has to keep drawing cards until he is over 17
+    while True:  
+      time.sleep(1)
+      if dealersum < 17:
+        dealercards.append(random.randint(2, 11))
+        dealersum = sum(dealercards)
+        print("The dealer has hit again. Here is the dealer's new hand.\n")
+        time.sleep(1)
+        print(dealercards)
+      elif dealersum == 21:
+        print("The dealer got blackjack! He Wins!\n")
+        break
+      elif dealersum > 21:
+        print("The dealer busted over 21. You Win!\n")
+        break
+      else:
+      #This is if the dealer is in between 17-21 and to see if who wins the game
+        print("The dealer has finalized his hand.\n")
+        time.sleep(1)
+        if sumuser == dealersum:
+          print("It's a tie.")
+        elif sumuser > dealersum:
+          print("You've won! Good Job!")
+        else:
+          print("The dealer has won. Maybe next time.")
+        break
+  input("Press ENTER to play again\n")
+      
+    
+
+
+      
+
