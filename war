@@ -1,0 +1,50 @@
+import random
+import time
+playerone = 0
+playertwo = 0
+roundnumber = 0
+playeronescore = 0
+playertwoscore = 0
+input("Welcome to the Game of War!\nThe first player will be given a random card from 2 to 10, and the second player will also be given a random card from 2 to 10.\nThis game repeats this for 10 rounds, and each player has a chance of winning each of the rounds IF their card is greater than the other persons.\nPress ENTER to play")
+time.sleep(1)
+for i in range(0, 10):
+  roundnumber = i + 1
+  playerone = random.randint(2, 10)
+  playertwo = random.randint(2, 10)
+  print("\nHere is player one's card for Round " + str(roundnumber) + ": " + str(playerone))
+  time.sleep(1)
+  print("Here is player two's card for Round " + str(roundnumber) + ": " + str(playertwo))
+  time.sleep(1)
+  if playerone > playertwo:
+    print("Player 1 has won this round!")
+    time.sleep(1)
+    playeronescore = playeronescore + 1
+    print("\nThe score for player one is: " + str(playeronescore))
+    print("The score for player two is: " + str(playertwoscore))
+    time.sleep(1)
+  elif playerone < playertwo:
+    print("Player 2 has won this round!")
+    time.sleep(1)
+    playertwoscore = playertwoscore + 1
+    print("\nThe score for player one is: " + str(playeronescore))
+    print("The score for player two is: " + str(playertwoscore))
+    time.sleep(1)
+  else:
+    print("This round is a tie! Both players score a point!")
+    time.sleep(1)
+    playeronescore = playeronescore + 1
+    playertwoscore = playertwoscore + 1
+    print("\nThe score for player one is: " + str(playeronescore))
+    print("The score for player two is: " + str(playertwoscore))
+    time.sleep(1)
+print("\nAll 10 rounds have been finished. The scores are as followed: ")
+time.sleep(1)
+print("\nPlayer 1's score is " + str(playeronescore))
+print("Player 2's score is " + str(playertwoscore))
+time.sleep(1)
+if playeronescore > playertwoscore:
+  print("\nPlayer 1 has won! Congratulations!")
+elif playeronescore < playertwoscore:
+  print("\nPlayer 2 has won! Congratulations!")
+else:
+  print("\nIt's a tie! Congratulations to both players!")
